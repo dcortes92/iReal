@@ -9,18 +9,19 @@
 
 
  class clienteInternoAlambrado{
-	
+	int sockfd;
 public:
 	 void error(const char *msg)
 	{
     		perror(msg);
     		exit(0);
 	}
-	 void enviarMensaje(char* buffer, int portno, char* host){
+
+	 void conectarServidor(int portno, char* host){
 		struct sockaddr_in serv_addr;
     		struct hostent *server;
 	
-		int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+		sockfd = socket(AF_INET, SOCK_STREAM, 0);
 		if (sockfd < 0) 
         		error("ERROR opening socket");
     		server = gethostbyname(host);
@@ -38,15 +39,18 @@ public:
     		serv_addr.sin_port = htons(portno);
     		if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
         		error("ERROR connecting");
+	}
+
+	 void enviarMensaje(char* buffer){
 		
-
-
         	int n = write(sockfd,buffer,strlen(buffer));
         	if (n < 0) 
              		error("ERROR writing to socket");
+    	}
+	 void cerrarConexion(){
         	//bzero(buffer,256);
 		close(sockfd);
-    	}
+	}
 	clienteInternoAlambrado(){
 	}
 };
