@@ -1,8 +1,9 @@
-
 #include "gl.h"
 #include "alioscopy.h"
 #include "Camera.cpp"
 #include "clienteInternoAlambrado.cpp"
+
+/*Comentario*/
 
 
 /////////////////////////////////////////////////////////////////////////////////
