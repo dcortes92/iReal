@@ -1,0 +1,4 @@
+git add .
+git commit -m "Qué se hizo en el commit"
+git pull origin master /*Hace pull al repositorio en caso de que hayan cambios hechos por otras personas*/
+git push origin master /*Escribe los cambios en el repositorio*/
